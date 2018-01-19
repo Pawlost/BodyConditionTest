@@ -11,12 +11,12 @@
     >
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="100dp"
         android:layout_weight="9"
         android:orientation="vertical"
         >
-        <fragment android:name="stredoskolskaodbornacinost.soc.bodyconditiontest.Exercise"
-            android:id="@+id/list"
+        <fragment android:name="stredoskolskaodbornacinost.soc.bodyconditiontest.HomeScreen"
+            android:id="@+id/main_fragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
     </LinearLayout>
@@ -28,43 +28,44 @@
         >
 
         <Button
-            android:id="@+id/plan"
-            android:layout_width="157dp"
+            android:id="@+id/home"
+            android:layout_width="80dp"
             android:layout_height="match_parent"
             android:layout_gravity="center_horizontal"
-            android:layout_weight="1"
-            android:text="Plan" />
+            android:onClick="homeButton"
+            android:text="Home" />
 
         <Button
             android:id="@+id/testy"
-            android:layout_width="157dp"
+            android:layout_width="80dp"
             android:layout_height="match_parent"
             android:layout_gravity="center_horizontal"
-            android:layout_weight="1"
+            android:onClick="testButton"
             android:text="Testy" />
 
         <Button
             android:id="@+id/cviceni"
-            android:layout_width="157dp"
+            android:layout_width="80dp"
             android:layout_height="match_parent"
             android:layout_gravity="center_horizontal"
-            android:layout_weight="1"
+            android:onClick="exerciseButton"
             android:text="Cviceni" />
 
         <Button
             android:id="@+id/statistiky"
-            android:layout_width="wrap_content"
+            android:layout_width="80dp"
             android:layout_height="match_parent"
             android:layout_gravity="center_horizontal"
+            android:onClick="statisticsButton"
             android:text="Statistiky" />
 
         <Button
             android:id="@+id/profil"
-            android:layout_width="wrap_content"
+            android:layout_width="80dp"
             android:layout_height="match_parent"
             android:layout_gravity="center_horizontal"
+            android:onClick="profilButton"
             android:text="Profil" />
-
     </LinearLayout>
 
 </LinearLayout>
