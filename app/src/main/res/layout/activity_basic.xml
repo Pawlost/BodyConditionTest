@@ -7,18 +7,15 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:weightSum="10"
-    tools:context="stredoskolskaodbornacinost.soc.bodyconditiontest.BasicActivity"
+    tools:context="stredoskolskaodbornacinost.soc.bodyconditiontest.muscles.main.BasicMuscleActivity"
     >
     <LinearLayout
+        android:id="@+id/basic_fragment_container"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="0dp"
         android:layout_weight="9"
         android:orientation="vertical"
         >
-        <fragment android:name="stredoskolskaodbornacinost.soc.bodyconditiontest.HomeScreen"
-            android:id="@+id/main_fragment"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -28,7 +25,7 @@
         >
 
         <Button
-            android:id="@+id/home"
+            android:id="@+id/homeButton"
             android:layout_width="80dp"
             android:layout_height="match_parent"
             android:layout_gravity="center_horizontal"
@@ -36,7 +33,7 @@
             android:text="Home" />
 
         <Button
-            android:id="@+id/testy"
+            android:id="@+id/testsButton"
             android:layout_width="80dp"
             android:layout_height="match_parent"
             android:layout_gravity="center_horizontal"
@@ -44,7 +41,7 @@
             android:text="Testy" />
 
         <Button
-            android:id="@+id/cviceni"
+            android:id="@+id/firstAidButton"
             android:layout_width="80dp"
             android:layout_height="match_parent"
             android:layout_gravity="center_horizontal"
@@ -52,12 +49,12 @@
             android:text="Cviceni" />
 
         <Button
-            android:id="@+id/statistiky"
+            android:id="@+id/conditionButton"
             android:layout_width="80dp"
             android:layout_height="match_parent"
             android:layout_gravity="center_horizontal"
-            android:onClick="statisticsButton"
-            android:text="Statistiky" />
+            android:onClick="conditionButton"
+            android:text="Stav" />
 
         <Button
             android:id="@+id/profil"
