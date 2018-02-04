@@ -4,8 +4,9 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="stredoskolskaodbornacinost.soc.bodyconditiontest.muscles.fragments.UserTests"
-    android:orientation="vertical">
+    android:background="@color/colorDefault"
+    android:orientation="vertical"
+    tools:context="stredoskolskaodbornacinost.soc.bodyconditiontest.muscles.fragments.UserTests">
 
     <TextView
         android:id="@+id/testsHeader"

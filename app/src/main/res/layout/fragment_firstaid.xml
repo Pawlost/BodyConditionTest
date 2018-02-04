@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:weightSum="10"
+    android:background="@color/colorDefault"
     tools:context="stredoskolskaodbornacinost.soc.bodyconditiontest.muscles.fragments.ExerciseActivity"
     android:orientation="vertical">
 

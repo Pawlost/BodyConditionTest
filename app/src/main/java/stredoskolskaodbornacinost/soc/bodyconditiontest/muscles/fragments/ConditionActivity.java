@@ -1,15 +1,16 @@
 package stredoskolskaodbornacinost.soc.bodyconditiontest.muscles.fragments;
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.ImageButton;
+
 import stredoskolskaodbornacinost.soc.bodyconditiontest.*;
-import stredoskolskaodbornacinost.soc.bodyconditiontest.muscles.fragments.status.BackManActivity;
-import stredoskolskaodbornacinost.soc.bodyconditiontest.muscles.fragments.status.FrontManActivity;
+import stredoskolskaodbornacinost.soc.bodyconditiontest.muscles.fragments.status.BackManFragment;
+import stredoskolskaodbornacinost.soc.bodyconditiontest.muscles.fragments.status.FrontManFragment;
 
 
 public class ConditionActivity extends Fragment {
@@ -19,56 +20,55 @@ public class ConditionActivity extends Fragment {
     private Fragment fr;
 
     View view;
-    Button frontB;
-    Button backB;
+    ImageButton frontB;
+    ImageButton backB;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, final Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_condition, container, false);
         frM = getFragmentManager();
 
-        frontB = (Button) view.findViewById(R.id.front);
-        backB = (Button) view.findViewById(R.id.back);
+        frontB = view.findViewById(R.id.front);
+        backB = view.findViewById(R.id.back);
 
         //Set buttons to work
-        frontB.setOnClickListener(new View.OnClickListener()
-        {
+        frontB.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
-                fr = new FrontManActivity();
-                switchFragment(fr);
+            public void onClick(View v) {
+                switchFragment();
             }
         });
-        backB.setOnClickListener(new View.OnClickListener()
-        {
+        backB.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
-                fr = new BackManActivity();
-                switchFragment(fr);
+            public void onClick(View v) {
+                switchFragment();
             }
         });
-
-        Fragment fr = new FrontManActivity();
-        switchFragment(fr);
+        switchFragment();
 
         return view;
     }
+
     @Override
-    public void onDestroy(){
+    public void onDestroy() {
         super.onDestroy();
-        if(frM.findFragmentByTag("muscle_fragment") != null){
+        if (frM.findFragmentByTag("muscle_fragment") != null) {
             frT.remove(frM.findFragmentByTag("muscle_fragment"));
         }
     }
-    public void switchFragment(Fragment fr){
+
+    public void switchFragment() {
         frT = frM.beginTransaction();
-        if(frM.findFragmentByTag("muscle_fragment") != null){
-            frT.remove(frM.findFragmentByTag("muscle_fragment"));
+        Fragment fr;
+        if (frM.findFragmentByTag("FrontMan_fragment") != null) {
+            frT.remove(frM.findFragmentByTag("FrontMan_fragment"));
+            fr = new BackManFragment();
+            frT.add(R.id.muscle_fragment_container, fr, "BackMan_fragment");
+        } else {
+            if (frM.findFragmentByTag("BackMan_fragment") != null) frT.remove(frM.findFragmentByTag("BackMan_fragment"));
+            fr = new FrontManFragment();
+            frT.add(R.id.muscle_fragment_container, fr, "FrontMan_fragment");
         }
-        frT.add(R.id.muscle_fragment_container, fr, "muscle_fragment");
         frT.commit();
     }
 }

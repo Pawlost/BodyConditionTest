@@ -5,8 +5,8 @@
     android:layout_height="match_parent"
     android:weightSum="10"
     android:orientation="vertical"
-    tools:context=".muscles.fragments.status.FrontManActivity">
-
+    android:background="@color/colorDefault"
+    tools:context=".muscles.fragments.status.FrontManFragment">
 
     <LinearLayout
         android:layout_width="match_parent"

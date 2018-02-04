@@ -8,61 +8,74 @@
     android:orientation="vertical"
     android:weightSum="10"
     tools:context="stredoskolskaodbornacinost.soc.bodyconditiontest.muscles.main.BasicMuscleActivity"
+    android:background="@color/colorDefault"
     >
-    <LinearLayout
-        android:id="@+id/basic_fragment_container"
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/basic_fragment_pager"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="9"
         android:orientation="vertical"
-        >
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
+        />
+    <RadioGroup
+        android:id="@+id/mainNavigation"
+        android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_weight="1"
         android:orientation="horizontal"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_vertical"
+        android:button="@null"
+        android:background="@color/colorPrimary"
         >
 
-        <Button
+        <RadioButton
             android:id="@+id/homeButton"
-            android:layout_width="80dp"
-            android:layout_height="match_parent"
-            android:layout_gravity="center_horizontal"
-            android:onClick="homeButton"
-            android:text="Home" />
+            android:layout_marginRight="5dp"
+            android:layout_marginLeft="10dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:onClick="onClickButtonMethod"
+            android:button="@null"
+            android:background="@drawable/background_homebutton" />
 
-        <Button
+        <RadioButton
             android:id="@+id/testsButton"
-            android:layout_width="80dp"
-            android:layout_height="match_parent"
-            android:layout_gravity="center_horizontal"
-            android:onClick="testButton"
-            android:text="Testy" />
+            android:layout_marginHorizontal="5dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:onClick="onClickButtonMethod"
+            android:button="@null"
+            android:background="@drawable/background_testbutton"/>
 
-        <Button
+        <RadioButton
             android:id="@+id/firstAidButton"
-            android:layout_width="80dp"
-            android:layout_height="match_parent"
-            android:layout_gravity="center_horizontal"
-            android:onClick="exerciseButton"
-            android:text="Cviceni" />
+            android:layout_marginHorizontal="5dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:onClick="onClickButtonMethod"
+            android:button="@null"
+            android:background="@drawable/background_firstaidbutton"/>
 
-        <Button
+        <RadioButton
             android:id="@+id/conditionButton"
-            android:layout_width="80dp"
-            android:layout_height="match_parent"
-            android:layout_gravity="center_horizontal"
-            android:onClick="conditionButton"
-            android:text="Stav" />
+            android:layout_marginHorizontal="5dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:onClick="onClickButtonMethod"
+            android:button="@null"
+            android:background="@drawable/background_conditionbutton"/>
 
-        <Button
-            android:id="@+id/profil"
-            android:layout_width="80dp"
-            android:layout_height="match_parent"
-            android:layout_gravity="center_horizontal"
-            android:onClick="profilButton"
-            android:text="Profil" />
-    </LinearLayout>
+        <RadioButton
+            android:id="@+id/profilButton"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="10dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:onClick="onClickButtonMethod"
+            android:button="@null"
+            android:background="@drawable/background_profilbutton"/>
+    </RadioGroup>
 
 </LinearLayout>
