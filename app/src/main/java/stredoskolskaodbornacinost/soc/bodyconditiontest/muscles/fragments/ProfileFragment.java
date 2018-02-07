@@ -14,7 +14,7 @@ import stredoskolskaodbornacinost.soc.bodyconditiontest.*;
 import stredoskolskaodbornacinost.soc.bodyconditiontest.muscles.main.BCTMuscleHelper;
 import stredoskolskaodbornacinost.soc.bodyconditiontest.muscles.main.BasicMuscleActivity;
 
-public class ProfileActivity extends Fragment {
+public class ProfileFragment extends Fragment {
 
     BasicMuscleActivity mainActivity;
 
@@ -41,5 +41,6 @@ public class ProfileActivity extends Fragment {
         super.onStop();
         mainActivity.saveToDatabase(editName.getText().toString(), editLastName.getText().toString(), Integer.parseInt(editWeight.getText().toString()),
                 Integer.parseInt(editWeight.getText().toString()), whamenButton.isChecked());
+        mainActivity.createDiagnoseFragments(1);
     }
 }

@@ -16,7 +16,7 @@ public class BCTMuscleHelper extends SQLiteOpenHelper {
     private static final String USERS_TABLE_NAME = "users";
     private static final String USERS_COLUMN_ID = "id";
     private static final String USERS_COLUMN_NAME = "name";
-    private static final String USERS_COLUMN_SURNAME = "surname";
+    private static final String USERS_COLUMN_SURNAME = "lastName";
     private static final String USERS_COLUMN_BODYWEIGHT = "weight";
     private static final String USERS_COLUMN_BODYHEIGHT = "height";
     private static final String USERS_COLUMN_SEX = "sex";
@@ -30,7 +30,7 @@ public class BCTMuscleHelper extends SQLiteOpenHelper {
         // TODO Auto-generated method stub
         db.execSQL(
                 "create table users " +
-                        "(id integer primary key autoincrement, name text, surname text, weight text, height text, sex text)"
+                        "(id integer primary key autoincrement, name text, lastName text, weight text, height text, sex text)"
         );
     }
 
@@ -41,15 +41,15 @@ public class BCTMuscleHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public boolean insertContact (String name, String surname, String weight, String height,String sex) {
+    public boolean insertdWeightData (String name, String lastName, String weight, String height,String sex) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("name", name);
-        contentValues.put("surname", surname);
+        contentValues.put("lastName", lastName);
         contentValues.put("weight", weight);
         contentValues.put("height", height);
         contentValues.put("sex", sex);
-        db.insert("contacts", null, contentValues);
+        db.insert("users", null, contentValues);
         return true;
     }
 
@@ -65,7 +65,7 @@ public class BCTMuscleHelper extends SQLiteOpenHelper {
         return numRows;
     }
 
-    public boolean updateContact (Integer id, String name, String surname, String weight, String height,String sex) {
+    public boolean updateWeight (Integer id, String name, String surname, String weight, String height,String sex) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("name", name);
@@ -77,14 +77,14 @@ public class BCTMuscleHelper extends SQLiteOpenHelper {
         return true;
     }
 
-    public Integer deleteContact (Integer id) {
+    public Integer deleteWeight (Integer id) {
         SQLiteDatabase db = this.getWritableDatabase();
         return db.delete("contacts",
                 "id = ? ",
                 new String[] { Integer.toString(id) });
     }
 
-    public ArrayList<String> getAllCotacts() {
+    public ArrayList<String> getAllDiagnostics() {
         ArrayList<String> array_list = new ArrayList<String>();
 
         //hp = new HashMap();

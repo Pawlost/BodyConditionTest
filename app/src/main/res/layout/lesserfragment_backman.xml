@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:weightSum="10"
     android:orientation="vertical"
-    tools:context=".muscles.fragments.status.BackManActivity"
+    tools:context=".muscles.fragments.status.BackManFragment"
     >
 
     <LinearLayout
@@ -34,6 +34,7 @@
         android:orientation="vertical">
 
         <LinearLayout
+            android:id="@+id/criticalConditon"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
@@ -46,6 +47,7 @@
                     android:textColor="@color/colorCritical"/>
             </LinearLayout>
         <LinearLayout
+            android:id="@+id/normalConditon"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">

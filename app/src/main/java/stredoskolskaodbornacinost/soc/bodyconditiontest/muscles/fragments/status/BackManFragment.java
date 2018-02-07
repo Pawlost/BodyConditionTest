@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 
 import stredoskolskaodbornacinost.soc.bodyconditiontest.R;
 
-public class BackManActivity extends Fragment {
+public class BackManFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

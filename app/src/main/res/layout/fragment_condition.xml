@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:weightSum="10"
-    tools:context="stredoskolskaodbornacinost.soc.bodyconditiontest.muscles.fragments.ConditionActivity"
+    tools:context="stredoskolskaodbornacinost.soc.bodyconditiontest.muscles.fragments.ConditionFragment"
     >
 
     <LinearLayout

@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import stredoskolskaodbornacinost.soc.bodyconditiontest.*;
 
-public class UserTests extends Fragment{
+public class UserTestsFragment extends Fragment{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
