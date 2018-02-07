@@ -6,16 +6,20 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import stredoskolskaodbornacinost.soc.bodyconditiontest.*;
+import stredoskolskaodbornacinost.soc.bodyconditiontest.muscles.main.BCTMuscleHelper;
 
-<<<<<<< HEAD:app/src/main/java/stredoskolskaodbornacinost/soc/bodyconditiontest/muscles/fragments/UserTestsFragment.java
-public class UserTestsFragment extends Fragment{
-=======
-public class UserTests extends Fragment {
->>>>>>> master:app/src/main/java/stredoskolskaodbornacinost/soc/bodyconditiontest/muscles/fragments/UserTests.java
+public class ProfileActivity extends Fragment {
+
+    private BCTMuscleHelper database;
+    private View view;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_usertests, container, false);
+        view = inflater.inflate(R.layout.fragment_profile, container, false);
+        database = new BCTMuscleHelper(this.getContext());
+        return view;
     }
 }

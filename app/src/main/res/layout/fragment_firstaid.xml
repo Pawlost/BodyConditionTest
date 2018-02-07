@@ -5,7 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:weightSum="10"
+<<<<<<< HEAD
     tools:context="stredoskolskaodbornacinost.soc.bodyconditiontest.muscles.fragments.FirstAidFragment"
+=======
+    android:background="@color/colorDefault"
+    tools:context="stredoskolskaodbornacinost.soc.bodyconditiontest.muscles.fragments.ExerciseActivity"
+>>>>>>> master
     android:orientation="vertical">
 
     <TextView

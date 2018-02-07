@@ -5,8 +5,13 @@
     android:layout_height="match_parent"
     android:weightSum="10"
     android:orientation="vertical"
+<<<<<<< HEAD:app/src/main/res/layout/lesserfragment_frontman.xml
     tools:context=".muscles.fragments.status.FrontManFragment">
 
+=======
+    android:background="@color/colorDefault"
+    tools:context=".muscles.fragments.status.FrontManFragment">
+>>>>>>> master:app/src/main/res/layout/fragment_frontman.xml
 
     <LinearLayout
         android:layout_width="match_parent"
