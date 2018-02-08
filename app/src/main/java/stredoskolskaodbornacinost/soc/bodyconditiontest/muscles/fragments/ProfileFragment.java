@@ -1,17 +1,15 @@
 package stredoskolskaodbornacinost.soc.bodyconditiontest.muscles.fragments;
 
-import android.app.Fragment;
+
 import android.os.Bundle;
-import android.provider.MediaStore;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.RadioButton;
-import android.widget.RadioGroup;
 
 import stredoskolskaodbornacinost.soc.bodyconditiontest.*;
-import stredoskolskaodbornacinost.soc.bodyconditiontest.muscles.main.BCTMuscleHelper;
 import stredoskolskaodbornacinost.soc.bodyconditiontest.muscles.main.BasicMuscleActivity;
 
 public class ProfileFragment extends Fragment {
@@ -41,6 +39,6 @@ public class ProfileFragment extends Fragment {
         super.onStop();
         mainActivity.saveToDatabase(editName.getText().toString(), editLastName.getText().toString(), Integer.parseInt(editWeight.getText().toString()),
                 Integer.parseInt(editWeight.getText().toString()), whamenButton.isChecked());
-        mainActivity.createDiagnoseFragments(1);
+        mainActivity.recaiveDiagnoseFragments(1);
     }
 }

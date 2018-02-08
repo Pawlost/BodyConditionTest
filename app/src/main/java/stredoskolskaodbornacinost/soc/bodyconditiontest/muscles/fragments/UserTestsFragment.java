@@ -7,11 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import stredoskolskaodbornacinost.soc.bodyconditiontest.*;
 
-<<<<<<< HEAD:app/src/main/java/stredoskolskaodbornacinost/soc/bodyconditiontest/muscles/fragments/UserTestsFragment.java
 public class UserTestsFragment extends Fragment{
-=======
-public class UserTests extends Fragment {
->>>>>>> master:app/src/main/java/stredoskolskaodbornacinost/soc/bodyconditiontest/muscles/fragments/UserTests.java
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

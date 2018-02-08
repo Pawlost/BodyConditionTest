@@ -5,7 +5,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RadioGroup;
@@ -17,86 +16,58 @@ import stredoskolskaodbornacinost.soc.bodyconditiontest.muscles.fragments.HomeSc
 import stredoskolskaodbornacinost.soc.bodyconditiontest.muscles.fragments.ProfileFragment;
 import stredoskolskaodbornacinost.soc.bodyconditiontest.muscles.fragments.UserTestsFragment;
 
-<<<<<<< HEAD
 public class BasicMuscleActivity extends AppCompatActivity {
-    private BCTMuscleHelper database;
-    private static FragmentManager frM;
-    private Fragment fr;
-    private HomeScreenFragment homeScreen;
-    private ConditionFragment conditionScreen;
+
+    private  HomeScreenFragment homeScreen;
+    private  ConditionFragment conditionScreen;
     private FirstAidFragment firsAidScreen;
     private UserTestsFragment userTestsScreen;
     private ProfileFragment profileScreen;
 
-
-=======
-public class BasicMuscleActivity extends AppCompatActivity{
-    final static int NUM_FRAGMENT = 5;
-    static RadioGroup radGroup;
+    private BCTMuscleHelper database;
+    RadioGroup radGroup;
     ViewPager viewPager;
     MyPagerAdapter myPA;
->>>>>>> master
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_basic);
 
+        homeScreen = new HomeScreenFragment();
+        conditionScreen = new ConditionFragment();
+        firsAidScreen = new FirstAidFragment();
+        userTestsScreen = new UserTestsFragment();
+        profileScreen = new ProfileFragment();
+
         radGroup = findViewById(R.id.mainNavigation);
         myPA = new MyPagerAdapter(this);
         viewPager = findViewById(R.id.basic_fragment_pager);
         viewPager.setAdapter(myPA);
-
-<<<<<<< HEAD
         database = new BCTMuscleHelper(this);
 
-        Fragment fr = new HomeScreenFragment();
-        switchFragment(fr);
+        viewPager.setCurrentItem(0);
     }
-    public void saveToDatabase(String name, String lastName, int weight, int height, boolean whamen){
-        if(whamen) {
+
+    public void saveToDatabase(String name, String lastName, int weight, int height, boolean whamen) {
+        if (whamen) {
             database.insertdWeightData(name, lastName, Integer.toString(weight), Integer.toString(height), "Woman");
-        }else{
+        } else {
             database.insertdWeightData(name, lastName, Integer.toString(weight), Integer.toString(height), "Man");
         }
     }
-    public void createDiagnoseFragments(int value){
+    public void recaiveDiagnoseFragments(int value) {
+
         Bundle bundle = new Bundle();
-        switch (value){
-            //BMI
+        switch (value) {
             case 1:
                 bundle.putInt("CONDITION_ALL", 1);
                 firsAidScreen.setArguments(bundle);
                 break;
         }
     }
-    public void switchFragment(Fragment fr){
-        FragmentTransaction frT = frM.beginTransaction();
-        if(frM.findFragmentByTag("new_fragment") != null){
-            frT.remove(frM.findFragmentByTag("new_fragment"));
-        }
-        frT.add(R.id.basic_fragment_container, fr, "new_fragment");
-        frT.commit();
-    }
-    public void homeButton(View view) {
-        switchFragment(homeScreen);
-    }
-    public void testButton(View view) {
-        switchFragment(userTestsScreen);
-    }
-    public void firsAidButton(View view) {
-        switchFragment(firsAidScreen);
-    }
-    public void conditionButton(View view) {
-        switchFragment(conditionScreen);
-    }
-    public void profilButton(View view) {
-        fr = new ProfileFragment();
-        switchFragment(profileScreen);
-    }
-    public BCTMuscleHelper getMainDatabase(){
+    public BCTMuscleHelper getMainDatabase() {
         return database;
-=======
-        viewPager.setCurrentItem(0);
     }
 
     public void onClickButtonMethod(View v) {
@@ -123,12 +94,12 @@ public class BasicMuscleActivity extends AppCompatActivity{
                 break;
         }
     }
-
-    public static class MyPagerAdapter extends FragmentPagerAdapter {
+    public class MyPagerAdapter extends FragmentPagerAdapter {
+        final static int NUM_FRAGMENT = 5;
 
         private MyPagerAdapter(AppCompatActivity context) {
             super(context.getSupportFragmentManager());
-        }
+    }
         @Override
         public void startUpdate (ViewGroup vg){
            ViewPager vp = (ViewPager) vg.findViewById(R.id.basic_fragment_pager);
@@ -153,22 +124,22 @@ public class BasicMuscleActivity extends AppCompatActivity{
         @Override
         public Fragment getItem(int position) {
             Fragment fr = null;
-            Log.println(Log.INFO, "LOL", String.valueOf(position));
+            Bundle bundle = new Bundle();
             switch (position) {
                 case 0:
-                    fr = new HomeScreen();
+                    fr = homeScreen;
                     break;
                 case 1:
-                    fr = new UserTests();
+                    fr = userTestsScreen;
                     break;
                 case 2:
-                    fr = new ExerciseActivity();
+                    fr = firsAidScreen;
                     break;
                 case 3:
-                    fr = new ConditionActivity();
+                    fr = conditionScreen;
                     break;
                 case 4:
-                    fr = new ProfileActivity();
+                    fr = profileScreen;
                     break;
             }
             return fr;
@@ -177,6 +148,5 @@ public class BasicMuscleActivity extends AppCompatActivity{
         public int getCount() {
             return NUM_FRAGMENT;
         }
->>>>>>> master
     }
 }

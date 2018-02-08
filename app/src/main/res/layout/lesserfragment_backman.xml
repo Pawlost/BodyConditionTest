@@ -5,11 +5,8 @@
     android:layout_height="match_parent"
     android:weightSum="10"
     android:orientation="vertical"
-    tools:context=".muscles.fragments.status.BackManFragment"
-<<<<<<< HEAD:app/src/main/res/layout/lesserfragment_backman.xml
-=======
     android:background="@color/colorDefault"
->>>>>>> master:app/src/main/res/layout/fragment_backman.xml
+    tools:context=".muscles.fragments.status.BackManFragment"
     >
 
     <LinearLayout

@@ -5,14 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-<<<<<<< HEAD
-    android:weightSum="10"
-    tools:context="stredoskolskaodbornacinost.soc.bodyconditiontest.muscles.fragments.ConditionFragment"
-=======
     android:weightSum="15"
     android:background="@color/colorDefault"
-    tools:context="stredoskolskaodbornacinost.soc.bodyconditiontest.muscles.fragments.ConditionActivity"
->>>>>>> master
+    tools:context="stredoskolskaodbornacinost.soc.bodyconditiontest.muscles.fragments.ConditionFragment"
     >
 
         <TextView
