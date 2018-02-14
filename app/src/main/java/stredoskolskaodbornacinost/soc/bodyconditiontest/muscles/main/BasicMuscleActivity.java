@@ -56,6 +56,7 @@ public class BasicMuscleActivity extends AppCompatActivity {
             database.insertdWeightData(name, lastName, Integer.toString(weight), Integer.toString(height), "Man");
         }
     }
+    
     public void recaiveDiagnoseFragments(int value) {
 
         Bundle bundle = new Bundle();
@@ -63,6 +64,8 @@ public class BasicMuscleActivity extends AppCompatActivity {
             case 1:
                 bundle.putInt("CONDITION_ALL", 1);
                 firsAidScreen.setArguments(bundle);
+                break;
+            case 2:
                 break;
         }
     }
@@ -96,13 +99,16 @@ public class BasicMuscleActivity extends AppCompatActivity {
     }
     public class MyPagerAdapter extends FragmentPagerAdapter {
         final static int NUM_FRAGMENT = 5;
+        private AppCompatActivity context;
 
         private MyPagerAdapter(AppCompatActivity context) {
             super(context.getSupportFragmentManager());
+            this.context = context;
     }
         @Override
         public void startUpdate (ViewGroup vg){
            ViewPager vp = (ViewPager) vg.findViewById(R.id.basic_fragment_pager);
+           vp.setOffscreenPageLimit(1);
            switch(vp.getCurrentItem()){
                case 0:
                    radGroup.check(R.id.homeButton);
@@ -124,7 +130,6 @@ public class BasicMuscleActivity extends AppCompatActivity {
         @Override
         public Fragment getItem(int position) {
             Fragment fr = null;
-            Bundle bundle = new Bundle();
             switch (position) {
                 case 0:
                     fr = homeScreen;
@@ -136,6 +141,7 @@ public class BasicMuscleActivity extends AppCompatActivity {
                     fr = firsAidScreen;
                     break;
                 case 3:
+                    conditionScreen.setConditionFragmentManager(context);
                     fr = conditionScreen;
                     break;
                 case 4:

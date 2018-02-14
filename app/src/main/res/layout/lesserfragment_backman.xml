@@ -20,11 +20,11 @@
             android:textAlignment="center"
             android:text="Zadní část"
             android:textSize="25sp"/>
-        <ImageView
+        <TextView
             android:id="@+id/imageView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@drawable/human_back"
+            android:text="Tady nebude obrázek"
             />
     </LinearLayout>
 

@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +19,7 @@ public class ConditionFragment extends Fragment {
 
     private static FragmentManager frM;
     private FragmentTransaction frT;
+    private AppCompatActivity context;
     private FrontManFragment frontMan;
     private BackManFragment backMan;
     View view;
@@ -27,6 +29,12 @@ public class ConditionFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, final Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_condition, container, false);
+        frontMan = new FrontManFragment();
+        backMan = new BackManFragment();
+
+        frontMan.setDiagonosisFragmentManager(context);
+        backMan.setDiagonosisFragmentManager(context);
+
         if (getArguments().containsKey("CONDITION_ALL")) {
             frontMan.setArguments(savedInstanceState);
             backMan.setArguments(savedInstanceState);
@@ -66,5 +74,9 @@ public class ConditionFragment extends Fragment {
         }
         frT.add(R.id.muscle_fragment_container, fr, "muscle_fragment");
         frT.commit();
+    }
+    public void setConditionFragmentManager(AppCompatActivity context){
+         this.context = context;
+         frM = context.getSupportFragmentManager();
     }
 }
