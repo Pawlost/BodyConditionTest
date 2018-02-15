@@ -19,11 +19,11 @@
             android:textAlignment="center"
             android:text="Přední část"
             android:textSize="25sp"/>
-        <TextView
+        <ImageView
             android:id="@+id/imageView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Tady bude obrázek"
+            android:src="@drawable/human_body"
             />
     </LinearLayout>
 
