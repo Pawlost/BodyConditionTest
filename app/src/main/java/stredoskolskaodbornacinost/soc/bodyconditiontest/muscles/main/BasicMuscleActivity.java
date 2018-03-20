@@ -1,15 +1,23 @@
 package stredoskolskaodbornacinost.soc.bodyconditiontest.muscles.main;
 
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RadioGroup;
 
+import java.math.BigDecimal;
+import java.util.ArrayList;
+
 import stredoskolskaodbornacinost.soc.bodyconditiontest.*;
+import stredoskolskaodbornacinost.soc.bodyconditiontest.muscles.Model.BCTMuscleHelper;
+import stredoskolskaodbornacinost.soc.bodyconditiontest.muscles.Model.Damage.DamageObject;
+import stredoskolskaodbornacinost.soc.bodyconditiontest.muscles.Model.DiagnoseHelper;
 import stredoskolskaodbornacinost.soc.bodyconditiontest.muscles.fragments.ConditionFragment;
 import stredoskolskaodbornacinost.soc.bodyconditiontest.muscles.fragments.FirstAidFragment;
 import stredoskolskaodbornacinost.soc.bodyconditiontest.muscles.fragments.HomeScreenFragment;
@@ -18,13 +26,14 @@ import stredoskolskaodbornacinost.soc.bodyconditiontest.muscles.fragments.UserTe
 
 public class BasicMuscleActivity extends AppCompatActivity {
 
-    private  HomeScreenFragment homeScreen;
-    private  ConditionFragment conditionScreen;
+    private HomeScreenFragment homeScreen;
+    private ConditionFragment conditionScreen;
     private FirstAidFragment firsAidScreen;
     private UserTestsFragment userTestsScreen;
     private ProfileFragment profileScreen;
 
     private BCTMuscleHelper database;
+    private DiagnoseHelper diagnoseHelper;
     RadioGroup radGroup;
     ViewPager viewPager;
     MyPagerAdapter myPA;
@@ -49,61 +58,77 @@ public class BasicMuscleActivity extends AppCompatActivity {
         viewPager.setCurrentItem(0);
     }
 
-    public void saveToDatabase(String name, String lastName, int weight, int height, boolean whamen) {
+    public void setMuscleDatabase(String[] data, boolean whamen) {
         if (whamen) {
-            database.insertdWeightData(name, lastName, Integer.toString(weight), Integer.toString(height), "Woman");
+            database.insertdWeightData(data[0], data[1], data[2], data[3], "Whamen");
         } else {
-            database.insertdWeightData(name, lastName, Integer.toString(weight), Integer.toString(height), "Man");
+            database.insertdWeightData(data[0], data[1], data[2], data[3], "Man");
         }
     }
     
-    public void recaiveDiagnoseFragments(int value) {
+    public void recaiveDiagnoseFragments(int damageValue, String[] data) {
 
-        Bundle bundle = new Bundle();
-        switch (value) {
-            case 1:
-                bundle.putInt("CONDITION_ALL", 1);
-                firsAidScreen.setArguments(bundle);
-                break;
-            case 2:
-                break;
+        for (String d:data) {
+            Log.v("lol", d);
+        }
+
+        if(data.length != 0) {
+            Bundle bundle = new Bundle();
+            diagnoseHelper = new DiagnoseHelper();
+            switch (damageValue) {
+                case 0:
+                    DamageObject dmgO = new DamageObject("BMI Index",
+                            String.valueOf(myRound(diagnoseHelper.createBMIndex(Integer.parseInt(data[2]),
+                                    Integer.parseInt(data[3])))), diagnoseHelper.getBMIDiagnose(), 0);
+                    bundle.putInt("CONDITION_ALL_KEY", 0);
+                    bundle.putSerializable("CONDITION_ALL", dmgO);
+                    conditionScreen.setArguments(bundle);
+                    break;
+                case 1:
+                    DamageObject dmgO2 = new DamageObject("BMI Index",
+                            String.valueOf(myRound(diagnoseHelper.createBMIndex(Integer.parseInt(data[2]),
+                                    Integer.parseInt(data[3])))), diagnoseHelper.getBMIDiagnose(), 0);
+                    bundle.putInt("CONDITION_ALL_KEY", 0);
+                    bundle.putSerializable("CONDITION_ALL", dmgO2);
+                    conditionScreen.setArguments(bundle);
+                    break;
+                case 2:
+                    break;
+            }
         }
     }
-    public BCTMuscleHelper getMainDatabase() {
-        return database;
+    public float myRound(float number){
+        BigDecimal bd = new BigDecimal(Float.toString(number));
+        bd = bd.setScale(2, BigDecimal.ROUND_HALF_UP);
+        return bd.floatValue();
     }
 
     public void onClickButtonMethod(View v) {
+        viewPager.setAdapter(myPA);
+
         switch (v.getId()) {
             case R.id.homeButton:
-                viewPager.setAdapter(myPA);
                 viewPager.setCurrentItem(0);
                 break;
             case R.id.testsButton:
-                viewPager.setAdapter(myPA);
                 viewPager.setCurrentItem(1);
                 break;
             case R.id.firstAidButton:
-                viewPager.setAdapter(myPA);
                 viewPager.setCurrentItem(2);
                 break;
             case R.id.conditionButton:
-                viewPager.setAdapter(myPA);
                 viewPager.setCurrentItem(3);
                 break;
             case R.id.profilButton:
-                viewPager.setAdapter(myPA);
                 viewPager.setCurrentItem(4);
                 break;
         }
     }
     public class MyPagerAdapter extends FragmentPagerAdapter {
         final static int NUM_FRAGMENT = 5;
-        private AppCompatActivity context;
 
         private MyPagerAdapter(AppCompatActivity context) {
             super(context.getSupportFragmentManager());
-            this.context = context;
     }
         @Override
         public void startUpdate (ViewGroup vg){
@@ -141,7 +166,6 @@ public class BasicMuscleActivity extends AppCompatActivity {
                     fr = firsAidScreen;
                     break;
                 case 3:
-                    conditionScreen.setConditionFragmentManager(context);
                     fr = conditionScreen;
                     break;
                 case 4:

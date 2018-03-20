@@ -1,82 +1,106 @@
 package stredoskolskaodbornacinost.soc.bodyconditiontest.muscles.fragments;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
+import android.view.View.OnClickListener;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.TextView;
+
+import java.util.ArrayList;
 
 import stredoskolskaodbornacinost.soc.bodyconditiontest.*;
-import stredoskolskaodbornacinost.soc.bodyconditiontest.muscles.fragments.status.BackManFragment;
-import stredoskolskaodbornacinost.soc.bodyconditiontest.muscles.fragments.status.FrontManFragment;
+import stredoskolskaodbornacinost.soc.bodyconditiontest.muscles.Model.DiagnoseHelper;
+import stredoskolskaodbornacinost.soc.bodyconditiontest.muscles.Model.Damage.DamageObject;
 
 
 public class ConditionFragment extends Fragment {
 
-    private static FragmentManager frM;
-    private FragmentTransaction frT;
-    private AppCompatActivity context;
-    private FrontManFragment frontMan;
-    private BackManFragment backMan;
+    private DiagnoseHelper diagnoseBMI;
+    ImageView bodyImage;
+    TextView mainText;
     View view;
-    ImageButton frontB;
-    ImageButton backB;
+    private ArrayList<DamageObject> dmgObjs;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, final Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_condition, container, false);
-        frontMan = new FrontManFragment();
-        backMan = new BackManFragment();
 
-        frontMan.setDiagonosisFragmentManager(context);
-        backMan.setDiagonosisFragmentManager(context);
+        diagnoseBMI = new DiagnoseHelper();
 
-        if (getArguments().containsKey("CONDITION_ALL")) {
-            frontMan.setArguments(savedInstanceState);
-            backMan.setArguments(savedInstanceState);
+        bodyImage = (ImageView) view.findViewById(R.id.bodyImage);
+        mainText = (TextView) view.findViewById(R.id.bodyPartText);
+
+        ImageButton fronButton = (ImageButton) view.findViewById(R.id.frontManButton);
+        ImageButton backButton = (ImageButton) view.findViewById(R.id.backManButton);
+
+        fronButton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                bodyImage.setImageResource(R.drawable.human_body);
+                mainText.setText("Přední část");
+            }
+        });
+        backButton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                bodyImage.setImageResource(R.drawable.human_back);
+                mainText.setText("Zadní část");
+            }
+        });
+        dmgObjs = new ArrayList<DamageObject>();
+
+        if (getArguments() != null) {
+            if (getArguments().containsKey("CONDITION_ALL_KEY") && getArguments().containsKey("CONDITION_ALL")) {
+                Bundle bundle = getArguments();
+                ListView layout = (ListView)view.findViewById(R.id.statusBodyContainer);
+                dmgObjs.add((DamageObject) bundle.getSerializable("CONDITION_ALL"));
+
+                switch (bundle.getInt("CONDITION_ALL")) {
+                    case 0:
+                        DamageListAdapter damageListAdapter = new DamageListAdapter(getActivity(), dmgObjs);
+                        layout.setAdapter(damageListAdapter);
+                        break;
+                }
+            }
         }
 
-        frontB = view.findViewById(R.id.front);
-        backB = view.findViewById(R.id.back);
-
-        //Set buttons to work
-        frontB.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                switchFragment(frontMan);
-            }
-        });
-        backB.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                switchFragment(backMan);
-            }
-        });
         return view;
     }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        if (frM.findFragmentByTag("muscle_fragment") != null) {
-            frT.remove(frM.findFragmentByTag("muscle_fragment"));
+    class DamageListAdapter extends ArrayAdapter<DamageObject> {
+        public DamageListAdapter(Context context, ArrayList<DamageObject> dmg) {
+            super(context, 0, dmg);
         }
-    }
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
 
-    public void switchFragment(Fragment fr) {
-        frT = frM.beginTransaction();
-        if(frM.findFragmentByTag("muscle_fragment") != null){
-            frT.remove(frM.findFragmentByTag("muscle_fragment"));
+            DamageObject dam = getItem(position);
+
+            if (convertView == null) {
+                convertView = LayoutInflater.from(getContext()).inflate(R.layout.damage_layout, parent, false);
+            }
+
+            TextView mainTitle = (TextView) convertView.findViewById(R.id.mainTitle);
+            TextView valueText = (TextView) convertView.findViewById(R.id.Value);
+            TextView diagnoseValue = (TextView) convertView.findViewById(R.id.setDiagnose);
+
+            if(dam.getMainTitle() != null){
+                mainTitle.setText(dam.getMainTitle());
+            }
+            if(dam.getValue() != null) {
+                valueText.setText("Tvůj BMI index je: " + dam.getValue());
+            }
+            if(dam.getDiagnose() != null) {
+                diagnoseValue.setText("Diagnoza je: " + dam.getDiagnose());
+            }
+
+            return convertView;
         }
-        frT.add(R.id.muscle_fragment_container, fr, "muscle_fragment");
-        frT.commit();
-    }
-    public void setConditionFragmentManager(AppCompatActivity context){
-         this.context = context;
-         frM = context.getSupportFragmentManager();
     }
 }

@@ -1,4 +1,4 @@
-package stredoskolskaodbornacinost.soc.bodyconditiontest.muscles.main;
+package stredoskolskaodbornacinost.soc.bodyconditiontest.muscles.Model;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -41,7 +41,7 @@ public class BCTMuscleHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public boolean insertdWeightData (String name, String lastName, String weight, String height,String sex) {
+    public boolean insertdWeightData (String name, String lastName, String weight, String height, String sex) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("name", name);

@@ -97,7 +97,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="5"
-                android:hint="Váha"
+                android:text="0"
                 android:inputType="number" />
             <TextView
                 android:layout_width="wrap_content"
@@ -120,14 +120,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:text="0"
                 android:ems="5"
-                android:hint="Výška"
                 android:inputType="number" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="3"
-                android:text="m"/>
+                android:text="cm"/>
         </LinearLayout>
 
         <TextView

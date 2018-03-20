@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/BodyConditionTest.iml" filepath="$PROJECT_DIR$/BodyConditionTest.iml" />
-      <module fileurl="file://C:\Users\balda\Desktop\MyProjects\BodyConditionTest\BodyConditionTests.iml" filepath="C:\Users\balda\Desktop\MyProjects\BodyConditionTest\BodyConditionTests.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
