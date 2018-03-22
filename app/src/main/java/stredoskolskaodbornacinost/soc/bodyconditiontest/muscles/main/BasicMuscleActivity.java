@@ -1,12 +1,10 @@
 package stredoskolskaodbornacinost.soc.bodyconditiontest.muscles.main;
 
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RadioGroup;
@@ -15,9 +13,8 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 
 import stredoskolskaodbornacinost.soc.bodyconditiontest.*;
-import stredoskolskaodbornacinost.soc.bodyconditiontest.muscles.Model.BCTMuscleHelper;
+import stredoskolskaodbornacinost.soc.bodyconditiontest.muscles.Model.Database.BSMuscleHelper;
 import stredoskolskaodbornacinost.soc.bodyconditiontest.muscles.Model.Damage.DamageObject;
-import stredoskolskaodbornacinost.soc.bodyconditiontest.muscles.Model.DiagnoseHelper;
 import stredoskolskaodbornacinost.soc.bodyconditiontest.muscles.fragments.ConditionFragment;
 import stredoskolskaodbornacinost.soc.bodyconditiontest.muscles.fragments.FirstAidFragment;
 import stredoskolskaodbornacinost.soc.bodyconditiontest.muscles.fragments.HomeScreenFragment;
@@ -32,7 +29,7 @@ public class BasicMuscleActivity extends AppCompatActivity {
     private UserTestsFragment userTestsScreen;
     private ProfileFragment profileScreen;
 
-    private BCTMuscleHelper database;
+    private BSMuscleHelper database;
     private DiagnoseHelper diagnoseHelper;
     RadioGroup radGroup;
     ViewPager viewPager;
@@ -53,25 +50,31 @@ public class BasicMuscleActivity extends AppCompatActivity {
         myPA = new MyPagerAdapter(this);
         viewPager = findViewById(R.id.basic_fragment_pager);
         viewPager.setAdapter(myPA);
-        database = new BCTMuscleHelper(this);
+        database = new BSMuscleHelper(this);
 
         viewPager.setCurrentItem(0);
     }
 
     public void setMuscleDatabase(String[] data, boolean whamen) {
         if (whamen) {
-            database.insertdWeightData(data[0], data[1], data[2], data[3], "Whamen");
+            database.insertProfileData(data[0], data[1], data[2], data[3], "Whamen");
         } else {
-            database.insertdWeightData(data[0], data[1], data[2], data[3], "Man");
+            database.insertProfileData(data[0], data[1], data[2], data[3], "Man");
+        }
+    }
+    public void setProfileData() {
+        if (!database.getAllDiagnostics().isEmpty()) {
+            ArrayList<String> data = database.getAllDiagnostics();
+            String[] data2 = new String [5];
+            for (int i = 0; i < data.size(); i++){
+                data2[i] = data.get(i);
+            }
+            profileScreen.setEditTParams(data2);
+            setConditionDiagnose(0, data2);
         }
     }
     
-    public void recaiveDiagnoseFragments(int damageValue, String[] data) {
-
-        for (String d:data) {
-            Log.v("lol", d);
-        }
-
+    public void setConditionDiagnose(int damageValue, String[] data) {
         if(data.length != 0) {
             Bundle bundle = new Bundle();
             diagnoseHelper = new DiagnoseHelper();

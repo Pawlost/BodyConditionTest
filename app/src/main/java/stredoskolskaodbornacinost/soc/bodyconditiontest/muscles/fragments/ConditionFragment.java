@@ -2,6 +2,7 @@ package stredoskolskaodbornacinost.soc.bodyconditiontest.muscles.fragments;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.view.View.OnClickListener;
 import android.view.LayoutInflater;
@@ -16,23 +17,21 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import stredoskolskaodbornacinost.soc.bodyconditiontest.*;
-import stredoskolskaodbornacinost.soc.bodyconditiontest.muscles.Model.DiagnoseHelper;
+import stredoskolskaodbornacinost.soc.bodyconditiontest.muscles.main.DiagnoseHelper;
 import stredoskolskaodbornacinost.soc.bodyconditiontest.muscles.Model.Damage.DamageObject;
 
 
 public class ConditionFragment extends Fragment {
 
-    private DiagnoseHelper diagnoseBMI;
     ImageView bodyImage;
     TextView mainText;
     View view;
-    private ArrayList<DamageObject> dmgObjs;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, final Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_condition, container, false);
 
-        diagnoseBMI = new DiagnoseHelper();
+        DiagnoseHelper diagnoseBMI = new DiagnoseHelper();
 
         bodyImage = (ImageView) view.findViewById(R.id.bodyImage);
         mainText = (TextView) view.findViewById(R.id.bodyPartText);
@@ -54,7 +53,7 @@ public class ConditionFragment extends Fragment {
                 mainText.setText("Zadní část");
             }
         });
-        dmgObjs = new ArrayList<DamageObject>();
+        ArrayList<DamageObject> dmgObjs = new ArrayList<DamageObject>();
 
         if (getArguments() != null) {
             if (getArguments().containsKey("CONDITION_ALL_KEY") && getArguments().containsKey("CONDITION_ALL")) {
@@ -74,9 +73,11 @@ public class ConditionFragment extends Fragment {
         return view;
     }
     class DamageListAdapter extends ArrayAdapter<DamageObject> {
-        public DamageListAdapter(Context context, ArrayList<DamageObject> dmg) {
+        DamageListAdapter(Context context, ArrayList<DamageObject> dmg) {
             super(context, 0, dmg);
         }
+
+        @NonNull
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
 

@@ -1,4 +1,4 @@
-package stredoskolskaodbornacinost.soc.bodyconditiontest.muscles.Model;
+package stredoskolskaodbornacinost.soc.bodyconditiontest.muscles.Model.Database;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -10,7 +10,7 @@ import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteDatabase;
 
-public class BCTMuscleHelper extends SQLiteOpenHelper {
+public class BSMuscleHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "UsersDatabaseName.db";
     private static final String USERS_TABLE_NAME = "users";
@@ -21,7 +21,7 @@ public class BCTMuscleHelper extends SQLiteOpenHelper {
     private static final String USERS_COLUMN_BODYHEIGHT = "height";
     private static final String USERS_COLUMN_SEX = "sex";
 
-    public BCTMuscleHelper(Context context) {
+    public BSMuscleHelper(Context context) {
         super(context, DATABASE_NAME , null, 1);
     }
 
@@ -41,7 +41,7 @@ public class BCTMuscleHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public boolean insertdWeightData (String name, String lastName, String weight, String height, String sex) {
+    public boolean insertProfileData (String name, String lastName, String weight, String height, String sex) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("name", name);
@@ -65,7 +65,7 @@ public class BCTMuscleHelper extends SQLiteOpenHelper {
         return numRows;
     }
 
-    public boolean updateWeight (Integer id, String name, String surname, String weight, String height,String sex) {
+    public boolean updateProfile (Integer id, String name, String surname, String weight, String height,String sex) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("name", name);
@@ -77,7 +77,7 @@ public class BCTMuscleHelper extends SQLiteOpenHelper {
         return true;
     }
 
-    public Integer deleteWeight (Integer id) {
+    public Integer deleteProfile (Integer id) {
         SQLiteDatabase db = this.getWritableDatabase();
         return db.delete("contacts",
                 "id = ? ",
