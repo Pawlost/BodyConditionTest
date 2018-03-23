@@ -7,8 +7,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
+
+import java.util.ArrayList;
 
 import stredoskolskaodbornacinost.soc.bodyconditiontest.*;
 import stredoskolskaodbornacinost.soc.bodyconditiontest.muscles.Model.Damage.DamageObject;
@@ -17,27 +20,43 @@ import stredoskolskaodbornacinost.soc.bodyconditiontest.muscles.main.BasicMuscle
 public class ProfileFragment extends Fragment {
 
     BasicMuscleActivity mainActivity;
-    EditText name;
-    EditText lastname;
-    EditText weight;
-    EditText height;
+    ArrayList<EditText> profileData;
     private boolean whamen;
     View view;
 
-    private String[] data = new String[4];
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
+        profileData = new ArrayList<>();
         mainActivity = (BasicMuscleActivity) getActivity();
-        name = (EditText) view.findViewById(R.id.editJmeno);
-        lastname = view.findViewById(R.id.editPrijmeni);
-        weight = view.findViewById(R.id.editVaha);
-        height = view.findViewById(R.id.editVyska);
+
+        profileData.add((EditText) view.findViewById(R.id.editJmeno));
+        profileData.add((EditText) view.findViewById(R.id.editPrijmeni));
+        profileData.add((EditText) view.findViewById(R.id.editVaha));
+        profileData.add((EditText) view.findViewById(R.id.editVyska));
 
         this.view = view;
         return view;
     }
+
+    @Override
+    public void onPause(){
+        super.onPause();
+
+        whamen = view.findViewById(R.id.whameButton).isActivated();
+        String[] data = new String[profileData.size()];
+        for (int i=0; i<profileData.size(); i++)
+        {
+            if (profileData.get(i).getText().toString() == ""){
+                profileData.get(i).setText("0");
+            }
+            data[i] = profileData.get(i).getText().toString();
+        }
+        mainActivity.setConditionDiagnose(0, data);
+    }
+    //MADE FOR DATABASE
+        /*
     public void setEditTParams(String[] data){
         name.setText(data[0]);
         lastname.setText(data[1]);
@@ -47,20 +66,5 @@ public class ProfileFragment extends Fragment {
             view.findViewById(R.id.whameButton).setPressed(true);
         }
     }
-    @Override
-    public void onPause(){
-        super.onPause();
-        whamen = view.findViewById(R.id.whameButton).isActivated();
-        data[0] = name.getText().toString();
-        data[1] = lastname.getText().toString();
-        if(weight.getText().toString() != "" && height.getText().toString() != "") {
-            data[2] = weight.getText().toString();
-            data[3] = height.getText().toString();
-        }else{
-            data[2] = "0";
-            data[3] = "0";
-        }
-        mainActivity.setMuscleDatabase(data, whamen);
-        mainActivity.setConditionDiagnose(1, data);
-    }
+    */
 }
