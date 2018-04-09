@@ -1,6 +1,5 @@
 package stredoskolskaodbornacinost.soc.bodyconditiontest.muscles.main.adapters;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
@@ -13,8 +12,6 @@ import java.util.ArrayList;
 
 import stredoskolskaodbornacinost.soc.bodyconditiontest.R;
 import stredoskolskaodbornacinost.soc.bodyconditiontest.muscles.main.DamageObjects;
-
-import static stredoskolskaodbornacinost.soc.bodyconditiontest.R.string.*;
 
 /**
  * Created by balda on 23.03.2018.
@@ -46,7 +43,7 @@ public class DamageListAdapter extends ArrayAdapter<DamageObjects> {
             valueText.setText(R.string.diagnose_value_string + dam.getValue());
         }
         if(dam.getDiagnose() != null) {
-            diagnoseValue.setText(R.string.set_diagnose_string + dam.getDiagnose());
+            diagnoseValue.setText(R.string.set_diagnose_string_lg + dam.getDiagnose());
         }
 
         return convertView;

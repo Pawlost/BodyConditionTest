@@ -61,7 +61,8 @@ public class ProfileFragment extends Fragment {
         profData.age = Integer.parseInt(profileArray.get(2).getText().toString());
         profData.weight = Integer.parseInt(profileArray.get(3).getText().toString());
         profData.height = Integer.parseInt(profileArray.get(4).getText().toString());
-        profData.whamen = view.findViewById(R.id.whameButton).isActivated();;
+        profData.whamen = view.findViewById(R.id.whameButton).isActivated();
+
         mainActivity.setConditionDiagnose(0, profData);
     }
 

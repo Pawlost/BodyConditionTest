@@ -33,6 +33,6 @@
             android:layout_height="wrap_content"
             android:textSize="30sp"
             android:textAlignment="center"
-            android:text="@string/woman_string" />
+            android:text="@string/warning_string" />
     </LinearLayout>
 </LinearLayout>

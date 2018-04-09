@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Test Lidského Těla</string>
-    <string name="diagnose_value_string">"Tvůj BMI index je "</string>
-    <string name="set_diagnose_string">"Diagnosa je: "</string>
+    <string name="diagnose_value_string_lg">"Tvůj BMI index je "</string>
+    <string name="set_diagnose_string_lg">"Diagnosa je: "</string>
     <string name="profile_string">Profil</string>
     <string name="full_name_string">"Název testovacího subjektu: "</string>
     <string name="name_string">Jméno</string>

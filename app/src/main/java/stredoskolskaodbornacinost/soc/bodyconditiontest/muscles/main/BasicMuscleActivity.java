@@ -89,19 +89,21 @@ public class BasicMuscleActivity extends AppCompatActivity {
     //INSERT DATA INTO DATABASE
 
     @SuppressLint("StaticFieldLeak")
-    public void setConditionDiagnose(int damageValue, final ProfileData profData) {
+    public void setConditionDiagnose(int damageValue, ProfileData profData) {
         this.profData = profData;
+        final ProfileData profDataFinal = profData;
         Log.e("ProfileData", String.valueOf(profData==null));
         new AsyncTask<Void, Void, Void>() {
             @Override
             protected Void doInBackground(Void... voids) {
                 if(android.os.Debug.isDebuggerConnected())
                     android.os.Debug.waitForDebugger();
-                muscleDatabase.profileDao().insertProfile(profData);
+                muscleDatabase.profileDao().insertProfile(profDataFinal);
                 Log.e("Ukladani", "Povedlo se");
                 return null;
             }
         }.execute();
+
         Log.e("Ukladani", "Nepovedlo se");
         if (profData != null) {
             Bundle bundle = new Bundle();
@@ -116,6 +118,7 @@ public class BasicMuscleActivity extends AppCompatActivity {
                     bundle.putSerializable("CONDITION_ALL", dmgO);
                     fragments.get(3).setArguments(bundle);
                     break;
+
                 case 1:
                     DamageObjects dmgO2 = new DamageObjects("BMI Index",
                             String.valueOf(myRound(diagnoseHelper.createBMIndex(profData.weight,

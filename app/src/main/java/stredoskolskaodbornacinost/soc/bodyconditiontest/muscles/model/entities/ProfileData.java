@@ -14,10 +14,10 @@ public class ProfileData {
     @ColumnInfo(name = "profile_id")
     public int profileId = 0;
 
-    public String name = "";
-    public String lastname = "";
-    public int age = 0;
-    public int weight = 0;
-    public int height = 0;
-    public boolean whamen = false;
+    public String name;
+    public String lastname;
+    public int age;
+    public int weight;
+    public int height;
+    public boolean whamen;
 }
