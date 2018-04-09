@@ -1,4 +1,4 @@
-package stredoskolskaodbornacinost.soc.bodyconditiontest.muscles.main.ListHelpers;
+package stredoskolskaodbornacinost.soc.bodyconditiontest.muscles.main.adapters;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -26,7 +26,7 @@ public class MyPagerAdapter extends FragmentPagerAdapter {
     @Override
     public void startUpdate(ViewGroup vg) {
         ViewPager vp = (ViewPager) vg.findViewById(R.id.basic_fragment_pager);
-        vp.setOffscreenPageLimit(1);
+        vp.setOffscreenPageLimit(0);
         switch (vp.getCurrentItem()) {
             case 0:
                 radGroup.check(R.id.homeButton);
@@ -48,25 +48,7 @@ public class MyPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        Fragment fr = null;
-        switch (position) {
-            case 0:
-                fr = fragments.get(0);
-                break;
-            case 1:
-                fr = fragments.get(1);
-                break;
-            case 2:
-                fr = fragments.get(2);
-                break;
-            case 3:
-                fr = fragments.get(3);
-                break;
-            case 4:
-                fr = fragments.get(4);
-                break;
-        }
-        return fr;
+        return fragments.get(position);
     }
 
     @Override

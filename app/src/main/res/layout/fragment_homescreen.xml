@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:textSize="50sp"
         android:textAlignment="center"
-        android:text="Hlavní strana" />
+        android:text="@string/main_page_string" />
     <LinearLayout
         android:id="@+id/home_fragment_container"
         android:layout_width="match_parent"
@@ -26,13 +26,13 @@
             android:layout_height="wrap_content"
             android:textSize="30sp"
             android:textAlignment="center"
-            android:text="Novinky" />
+            android:text="@string/news_string" />
         <TextView
             android:id="@+id/warningText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="30sp"
             android:textAlignment="center"
-            android:text="Upozornění" />
+            android:text="@string/warning_string" />
     </LinearLayout>
 </LinearLayout>

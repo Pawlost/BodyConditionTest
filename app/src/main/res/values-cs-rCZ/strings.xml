@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Test Lidského Těla</string>
+    <string name="diagnose_value_string">"Tvůj BMI index je "</string>
+    <string name="set_diagnose_string">"Diagnosa je: "</string>
+    <string name="profile_string">Profil</string>
+    <string name="full_name_string">"Název testovacího subjektu: "</string>
+    <string name="name_string">Jméno</string>
+    <string name="last_name_string">Příjmení</string>
+    <string name="age_string">"Tvůj věk: "</string>
+    <string name="years_string">roků</string>
+    <string name="weight_string">Váha</string>
+    <string name="height_string">Výška</string>
+    <string name="sex_string">Pohlaví</string>
+    <string name="man_string">Muž</string>
+    <string name="woman_string">Žena</string>
+    <string name="mistakes_string">"Počet věcí který je s teou špatně: "</string>
+    <string name="body_condition_string">"Stav tvého těla je: "</string>
+    <string name="front_part_string">Přední část</string>
+    <string name="tests_string">Testy</string>
+    <string name="news_string">Novinky</string>
+    <string name="warning_string">Upozornění</string>
+    <string name="main_page_string">Hlavní strana</string>
+    <string name="first_aid_string">První pomoc</string>
+</resources>

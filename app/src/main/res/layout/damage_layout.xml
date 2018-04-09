@@ -11,15 +11,15 @@
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"/>
     <TextView
-        android:id="@+id/Value"
+        android:id="@+id/diagnoseValue"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
-        android:text="Hodnota je"/>
+        android:text="@string/diagnose_value_string"/>
     <TextView
         android:id="@+id/setDiagnose"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
-        android:text="Diagnosa je: "/>
+        android:text="@string/diagnose_value_string"/>
 </LinearLayout>

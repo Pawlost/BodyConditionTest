@@ -18,7 +18,7 @@
         android:layout_weight="1"
         android:textSize="50sp"
         android:textAlignment="center"
-        android:text="Profil" />
+        android:text="@string/profile_string" />
     <TextView
         android:id="@+id/yourName"
         android:layout_width="match_parent"
@@ -34,7 +34,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Název testovacího subjektu"/>
+            android:text="@string/full_name_string"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -46,7 +46,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
-                android:hint="Jméno"
+                android:hint="@string/name_string"
                 android:inputType="textPersonName" />
 
             <EditText
@@ -55,13 +55,13 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
-                android:hint="Příjmení"
+                android:hint="@string/last_name_string"
                 android:inputType="textPersonName" />
         </LinearLayout>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Věk"/>
+            android:text="@string/age_string"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -73,19 +73,19 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="5"
-                android:hint="Věk"
+                android:hint="@string/age_string"
                 android:inputType="number" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="3"
-                android:text="roků"/>
+                android:text="@string/years_string"/>
         </LinearLayout>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Váha"/>
+            android:text="@string/weight_string"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -103,13 +103,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="3"
-                android:text="kg"/>
+                android:text="@string/kilograms_string"/>
         </LinearLayout>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Výška"/>
+            android:text="@string/height_string"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -127,13 +127,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="3"
-                android:text="cm"/>
+                android:text="@string/centimeters_string"/>
         </LinearLayout>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Pohlaví"/>
+            android:text="@string/sex_string"/>
         <RadioGroup
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -145,14 +145,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Muž" />
+                android:text="@string/man_string" />
 
             <RadioButton
                 android:id="@+id/niceGuyButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Žena" />
+                android:text="@string/woman_string" />
         </RadioGroup>
 
         <LinearLayout
@@ -164,7 +164,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="3"
-                android:text="Počet věcí, který je s tebou špatně:"/>
+                android:text="@string/mistakes_string"/>
             <TextView
                 android:id="@+id/wrong_things_text"
                 android:text="0"

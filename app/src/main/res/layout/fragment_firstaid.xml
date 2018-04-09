@@ -16,7 +16,7 @@
         android:layout_weight="1"
         android:textSize="50sp"
         android:textAlignment="center"
-        android:text="První pomoc" />
+        android:text="@string/first_aid_string" />
     <ExpandableListView
         android:layout_width="match_parent"
         android:layout_height="0dp"

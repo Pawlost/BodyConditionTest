@@ -1,6 +1,27 @@
 <resources>
     <string name="app_name">Body Condition Test</string>
-    <array name="ConditionlList">
-        <item>Nevim</item>
-    </array>
+    <string name="diagnose_value_string">"Your BMI index is "</string>
+    <string name="set_diagnose_string">"Diagnose is "</string>
+    <string name="profile_string">Profile</string>
+    <string name="full_name_string">"Your name: "</string>
+    <string name="name_string">Name</string>
+    <string name="last_name_string">Last name</string>
+    <string name="age_string">Your age:</string>
+    <string name="years_string">"years "</string>
+    <string name="weight_string">Weight</string>
+    <string name="height_string">Height</string>
+    <string name="kilograms_string" translatable="false">kg</string>
+    <string name="centimeters_string" translatable="false">cm</string>
+    <string name="sex_string">Sex</string>
+    <string name="man_string">Man</string>
+    <string name="woman_string">Woman</string>
+    <string name="mistakes_string">"Wrong things in your body: "</string>
+    <string name="body_condition_string">Your body condition is:</string>
+    <string name="front_part_string">Front part</string>
+    <string name="tests_string">Tests</string>
+    <string name="news_string">News</string>
+    <string name="warning_string">Warning</string>
+    <string name="main_page_string">Main Page</string>
+    <string name="first_aid_string">First Aid</string>
+
 </resources>
