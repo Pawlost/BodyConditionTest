@@ -40,7 +40,7 @@ public class DamageListAdapter extends ArrayAdapter<DamageObjects> {
             mainTitle.setText(dam.getMainTitle());
         }
         if(dam.getValue() != null) {
-            valueText.setText(R.string.diagnose_value_string + dam.getValue());
+            valueText.setText(R.string.diagnose_value_string_lg + dam.getValue());
         }
         if(dam.getDiagnose() != null) {
             diagnoseValue.setText(R.string.set_diagnose_string_lg + dam.getDiagnose());

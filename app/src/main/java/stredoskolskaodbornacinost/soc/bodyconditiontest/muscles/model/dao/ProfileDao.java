@@ -19,8 +19,8 @@ public interface ProfileDao {
      * @return Array of all articles in the database
      */
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    public void insertProfile(ProfileData... profileData);
+    void insertProfile(ProfileData... profileData);
 
-    @Query("SELECT * FROM profile WHERE profile_id LIKE profile_id")
-    ProfileData getProfile();
+    @Query("SELECT * FROM profile")
+    ProfileData[] getProfile();
 }

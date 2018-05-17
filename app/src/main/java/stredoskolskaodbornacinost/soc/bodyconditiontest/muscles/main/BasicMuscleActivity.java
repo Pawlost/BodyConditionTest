@@ -31,7 +31,6 @@ public class BasicMuscleActivity extends AppCompatActivity {
 
     private ViewPager viewPager;
     private MyPagerAdapter myPA;
-    private MuscleDatabase muscleDatabase;
     private ProfileData profData;
 
     @Override
@@ -46,15 +45,14 @@ public class BasicMuscleActivity extends AppCompatActivity {
         fragments.add(new FirstAidFragment());
         fragments.add(new ConditionFragment());
         fragments.add(new ProfileFragment());
+        MuscleDatabase load = MuscleDatabase.load(this);
 
-        muscleDatabase = MuscleDatabase.getDatabase(this);
-       // muscleDatabase.profileDao().insertProfile(profData);
         try{
-            profData = muscleDatabase.profileDao().getProfile();
+            profData = load.profileDao().getProfile()[0];
             Log.e("Nacitani", "Povedlo se");
         }catch (RuntimeException e){
             profData = new ProfileData();
-            Log.e("Nacitani", "Nepovedlo se");
+            Log.e("Nacitani", "Nepovedlo se" + e.getMessage());
         }
         RadioGroup radGroup = findViewById(R.id.mainNavigation);
         myPA = new MyPagerAdapter(this, radGroup, fragments);
@@ -92,13 +90,14 @@ public class BasicMuscleActivity extends AppCompatActivity {
     public void setConditionDiagnose(int damageValue, ProfileData profData) {
         this.profData = profData;
         final ProfileData profDataFinal = profData;
-        Log.e("ProfileData", String.valueOf(profData==null));
+        Log.e("ProfileData", String.valueOf(profDataFinal==null));
+        final MuscleDatabase save = MuscleDatabase.save(this);
         new AsyncTask<Void, Void, Void>() {
             @Override
             protected Void doInBackground(Void... voids) {
                 if(android.os.Debug.isDebuggerConnected())
                     android.os.Debug.waitForDebugger();
-                muscleDatabase.profileDao().insertProfile(profDataFinal);
+                save.profileDao().insertProfile(profDataFinal);
                 Log.e("Ukladani", "Povedlo se");
                 return null;
             }
