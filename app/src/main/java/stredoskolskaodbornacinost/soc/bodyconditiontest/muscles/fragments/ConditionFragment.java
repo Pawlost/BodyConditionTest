@@ -16,7 +16,6 @@ import java.util.ArrayList;
 import stredoskolskaodbornacinost.soc.bodyconditiontest.*;
 import stredoskolskaodbornacinost.soc.bodyconditiontest.muscles.main.DamageObjects;
 import stredoskolskaodbornacinost.soc.bodyconditiontest.muscles.main.adapters.DamageListAdapter;
-import stredoskolskaodbornacinost.soc.bodyconditiontest.muscles.model.entities.ProfileData;
 
 
 public class ConditionFragment extends Fragment {
@@ -24,7 +23,6 @@ public class ConditionFragment extends Fragment {
     private ImageView bodyImage;
     private TextView mainText;
     private View view;
-    private ProfileData profData;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, final Bundle savedInstanceState) {
@@ -59,7 +57,7 @@ public class ConditionFragment extends Fragment {
                 ListView layout = (ListView)view.findViewById(R.id.statusBodyContainer);
                 dmgObjs.add((DamageObjects) bundle.getSerializable("CONDITION_ALL"));
 
-                switch (bundle.getInt("CONDITION_ALL")) {
+                switch (bundle.getInt("CONDITION_ALL_KEY")) {
                     case 0:
                         DamageListAdapter damageListAdapter = new DamageListAdapter(getActivity(), dmgObjs);
                         layout.setAdapter(damageListAdapter);
@@ -67,8 +65,6 @@ public class ConditionFragment extends Fragment {
                 }
             }
         }
-
-
         return view;
     }
 }

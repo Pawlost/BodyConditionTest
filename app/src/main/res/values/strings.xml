@@ -23,5 +23,6 @@
     <string name="tests_string">Tests</string>
     <string name="front_part_string">Front part</string>
     <string name="body_condition_string">"Your body contition is "</string>
+    <string name="welcome_string">Welcome</string>
 
 </resources>

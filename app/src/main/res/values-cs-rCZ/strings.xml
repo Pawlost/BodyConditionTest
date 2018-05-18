@@ -14,7 +14,7 @@
     <string name="sex_string">Pohlaví</string>
     <string name="man_string">Muž</string>
     <string name="woman_string">Žena</string>
-    <string name="mistakes_string">"Počet věcí který je s teou špatně: "</string>
+    <string name="mistakes_string">"Počet věcí který je s tebou špatně: "</string>
     <string name="body_condition_string">"Stav tvého těla je: "</string>
     <string name="front_part_string">Přední část</string>
     <string name="tests_string">Testy</string>
@@ -22,4 +22,5 @@
     <string name="warning_string">Upozornění</string>
     <string name="main_page_string">Hlavní strana</string>
     <string name="first_aid_string">První pomoc</string>
+    <string name="welcome_string">Vítejte</string>
 </resources>

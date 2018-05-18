@@ -1,10 +1,13 @@
 package stredoskolskaodbornacinost.soc.bodyconditiontest.muscles.main.adapters;
 
+import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.RadioGroup;
 
 import java.util.ArrayList;
@@ -26,7 +29,7 @@ public class MyPagerAdapter extends FragmentPagerAdapter {
     @Override
     public void startUpdate(ViewGroup vg) {
         ViewPager vp = (ViewPager) vg.findViewById(R.id.basic_fragment_pager);
-        vp.setOffscreenPageLimit(0);
+        vp.setOffscreenPageLimit(1);
         switch (vp.getCurrentItem()) {
             case 0:
                 radGroup.check(R.id.homeButton);

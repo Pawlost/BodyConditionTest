@@ -6,13 +6,11 @@ public class DamageObjects implements Serializable {
     private final String mainTitle;
     private final String value;
     private final String diagnose;
-    private final int index;
 
-    public DamageObjects(String title, String value, String diagnose, int index) {
+    public DamageObjects(String title, String value, String diagnose) {
         this.mainTitle = title;
         this.value = value;
         this.diagnose = diagnose;
-        this.index = index;
     }
 
     public String getDiagnose() {
@@ -25,9 +23,5 @@ public class DamageObjects implements Serializable {
 
     public String getMainTitle() {
         return this.mainTitle;
-    }
-
-    public int getIndex() {
-        return this.index;
     }
 }

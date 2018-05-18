@@ -1,6 +1,7 @@
 package stredoskolskaodbornacinost.soc.bodyconditiontest.muscles.main;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -8,6 +9,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.RadioGroup;
 
 import java.math.BigDecimal;
@@ -45,21 +47,21 @@ public class BasicMuscleActivity extends AppCompatActivity {
         fragments.add(new FirstAidFragment());
         fragments.add(new ConditionFragment());
         fragments.add(new ProfileFragment());
+
+        RadioGroup radGroup = findViewById(R.id.mainNavigation);
+        myPA = new MyPagerAdapter(this, radGroup, fragments);
+        initViewPager();
         MuscleDatabase load = MuscleDatabase.load(this);
 
         try{
             profData = load.profileDao().getProfile()[0];
+            setConditionDiagnose( new int[]{0, 1}, profData);
             Log.e("Nacitani", "Povedlo se");
         }catch (RuntimeException e){
             profData = new ProfileData();
             Log.e("Nacitani", "Nepovedlo se" + e.getMessage());
         }
-        RadioGroup radGroup = findViewById(R.id.mainNavigation);
-        myPA = new MyPagerAdapter(this, radGroup, fragments);
-        viewPager = findViewById(R.id.basic_fragment_pager);
-        viewPager.setAdapter(myPA);
 
-        viewPager.setCurrentItem(0);
     }
 
     public void onClickButtonMethod(View v) {
@@ -87,8 +89,10 @@ public class BasicMuscleActivity extends AppCompatActivity {
     //INSERT DATA INTO DATABASE
 
     @SuppressLint("StaticFieldLeak")
-    public void setConditionDiagnose(int damageValue, ProfileData profData) {
-        this.profData = profData;
+    public void setConditionDiagnose(int[] damageValue, ProfileData profData) {
+        if(profData != this.profData) {
+            this.profData = profData;
+        }
         final ProfileData profDataFinal = profData;
         Log.e("ProfileData", String.valueOf(profDataFinal==null));
         final MuscleDatabase save = MuscleDatabase.save(this);
@@ -107,32 +111,54 @@ public class BasicMuscleActivity extends AppCompatActivity {
         if (profData != null) {
             Bundle bundle = new Bundle();
             DiagnoseHelper diagnoseHelper = new DiagnoseHelper();
-            switch (damageValue) {
-                case 0:
-                    DamageObjects dmgO = new DamageObjects("BMI Index",
-                            String.valueOf(myRound(diagnoseHelper.createBMIndex(profData.weight,
-                                    profData.height))), diagnoseHelper.getBMIDiagnose(), 0);
+            for(int i:damageValue) {
+                switch (i) {
+                    case 0:
+                        DamageObjects dmgO = new DamageObjects("BMI Index",
+                                String.valueOf (myRound(diagnoseHelper.createBMIndex(profData.weight, profData.height))),
+                                diagnoseHelper.getBMIDiagnose());
+                        bundle.putInt("CONDITION_ALL_KEY", 0);
+                        bundle.putSerializable("CONDITION_ALL", dmgO);
+                        fragments.get(3).setArguments(bundle);
+                        break;
 
-                    bundle.putInt("CONDITION_ALL_KEY", 0);
-                    bundle.putSerializable("CONDITION_ALL", dmgO);
-                    fragments.get(3).setArguments(bundle);
-                    break;
-
-                case 1:
-                    DamageObjects dmgO2 = new DamageObjects("BMI Index",
-                            String.valueOf(myRound(diagnoseHelper.createBMIndex(profData.weight,
-                                    profData.height))), diagnoseHelper.getBMIDiagnose(), 0);
-
-                    bundle.putInt("CONDITION_ALL_KEY", 0);
-                    bundle.putSerializable("CONDITION_ALL", dmgO2);
-                    fragments.get(3).setArguments(bundle);
-                    break;
-                case 2:
-                    break;
+                    case 1:
+                        bundle.putStringArray("PROFILE_NAME", new String[]{profData.name, profData.lastname});
+                        fragments.get(0).setArguments(bundle);
+                        break;
+                }
+                myPA.updateFragments(fragments);
             }
-            myPA.updateFragments(fragments);
         }
     }
+
+    private void initViewPager(){
+        viewPager = findViewById(R.id.basic_fragment_pager);
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                Fragment fr = myPA.getItem(position);
+                if(fr.getView() != null) {
+                    InputMethodManager imm = (InputMethodManager) fr.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(fr.getView().getWindowToken(), 0);
+                }
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+
+        viewPager.setAdapter(myPA);
+        viewPager.setCurrentItem(0);
+    }
+
     //Function for round numbers
     public float myRound(float number) {
         BigDecimal bd = new BigDecimal(Float.toString(number));
@@ -140,6 +166,6 @@ public class BasicMuscleActivity extends AppCompatActivity {
         return bd.floatValue();
     }
     public ProfileData getProfileData(){
-        return profData;
+        return this.profData;
     }
 }
