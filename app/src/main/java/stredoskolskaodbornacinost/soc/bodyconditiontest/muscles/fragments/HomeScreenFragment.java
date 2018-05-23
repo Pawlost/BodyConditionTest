@@ -26,7 +26,7 @@ public class HomeScreenFragment extends Fragment {
                 TextView welcomeText = (TextView)view.findViewById(R.id.welcomeText);
                 String name = Objects.requireNonNull(bundle.getStringArray("PROFILE_NAME"))[0];
                 String lastname = Objects.requireNonNull(bundle.getStringArray("PROFILE_NAME"))[1];
-                welcomeText.setText(getContext().getResources().getString(R.string.welcome_string) + "\n"
+                welcomeText.setText(getContext().getResources().getString(R.string.welcome_string) + " "
                 + name + " " + lastname);
             }
         }

@@ -6,17 +6,25 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:weightSum="10"
     tools:context="stredoskolskaodbornacinost.soc.bodyconditiontest.muscles.main.BasicMuscleActivity"
-    android:background="@color/colorDefault"
-    >
+    android:background="@color/colorDefault">
+
+    <Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary">
+        <Button android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:gravity="left"/>
+    </Toolbar>
 
     <android.support.v4.view.ViewPager
         android:id="@+id/basic_fragment_pager"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_weight="9"
         android:orientation="vertical"
+        android:background="#ffffff"
         />
     <RadioGroup
         android:id="@+id/mainNavigation"
@@ -77,5 +85,5 @@
             android:button="@null"
             android:background="@drawable/background_profilbutton"/>
     </RadioGroup>
-
 </LinearLayout>
+

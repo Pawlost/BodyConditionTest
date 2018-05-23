@@ -20,7 +20,7 @@
         android:id="@+id/welcomeText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="35sp"
+        android:textSize="25sp"
         android:text="@string/welcome_string"
         android:textAlignment="center" />
 
@@ -29,19 +29,31 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+
         <TextView
             android:id="@+id/newsText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="30sp"
+            android:textSize="35sp"
             android:textAlignment="center"
             android:text="@string/news_string" />
+
+        <ListView android:id="@+id/home_news_list"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent" />
+
         <TextView
             android:id="@+id/warningText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="30sp"
+            android:textSize="35sp"
             android:textAlignment="center"
             android:text="@string/warning_string" />
+
+        <ListView
+            android:id="@+id/home_warning_list"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent" />
+
     </LinearLayout>
 </LinearLayout>
