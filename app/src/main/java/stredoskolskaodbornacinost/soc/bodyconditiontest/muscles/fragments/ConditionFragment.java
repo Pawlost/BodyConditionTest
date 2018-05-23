@@ -14,7 +14,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import stredoskolskaodbornacinost.soc.bodyconditiontest.*;
-import stredoskolskaodbornacinost.soc.bodyconditiontest.muscles.main.DamageObjects;
+import stredoskolskaodbornacinost.soc.bodyconditiontest.muscles.main.DamageObject;
 import stredoskolskaodbornacinost.soc.bodyconditiontest.muscles.main.adapters.DamageListAdapter;
 
 
@@ -49,20 +49,14 @@ public class ConditionFragment extends Fragment {
             }
         });
 
-        ArrayList<DamageObjects> dmgObjs = new ArrayList<DamageObjects>();
-
         if (getArguments() != null) {
-            if (getArguments().containsKey("CONDITION_ALL_KEY") && getArguments().containsKey("CONDITION_ALL")) {
+            if (getArguments().containsKey("CONDITION_ALL")) {
                 Bundle bundle = getArguments();
-                ListView layout = (ListView)view.findViewById(R.id.statusBodyContainer);
-                dmgObjs.add((DamageObjects) bundle.getSerializable("CONDITION_ALL"));
 
-                switch (bundle.getInt("CONDITION_ALL_KEY")) {
-                    case 0:
-                        DamageListAdapter damageListAdapter = new DamageListAdapter(getActivity(), dmgObjs);
-                        layout.setAdapter(damageListAdapter);
-                        break;
-                }
+                ListView layout = (ListView) view.findViewById(R.id.statusBodyContainer);
+                ArrayList<DamageObject> dmgObjs = (ArrayList<DamageObject>) bundle.getSerializable("CONDITION_ALL");
+                DamageListAdapter damageListAdapter = new DamageListAdapter(getActivity(), dmgObjs);
+                layout.setAdapter(damageListAdapter);
             }
         }
         return view;

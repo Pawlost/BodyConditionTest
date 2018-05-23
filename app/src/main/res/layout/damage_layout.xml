@@ -9,17 +9,12 @@
         android:id="@+id/mainTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal"/>
+        android:gravity="center_horizontal"
+        android:text="title"/>
     <TextView
-        android:id="@+id/diagnoseValue"
+        android:id="@+id/diagnoseText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
-        android:text="@string/diagnose_value_string_lg"/>
-    <TextView
-        android:id="@+id/setDiagnose"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:text="@string/set_diagnose_string_lg"/>
+        android:text="text"/>
 </LinearLayout>

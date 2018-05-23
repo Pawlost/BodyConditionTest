@@ -22,6 +22,7 @@ import stredoskolskaodbornacinost.soc.bodyconditiontest.muscles.fragments.HomeSc
 import stredoskolskaodbornacinost.soc.bodyconditiontest.muscles.fragments.ProfileFragment;
 import stredoskolskaodbornacinost.soc.bodyconditiontest.muscles.fragments.UserTestsFragment;
 import stredoskolskaodbornacinost.soc.bodyconditiontest.muscles.main.adapters.MyPagerAdapter;
+import stredoskolskaodbornacinost.soc.bodyconditiontest.muscles.main.damage.Obesity;
 import stredoskolskaodbornacinost.soc.bodyconditiontest.muscles.model.database.MuscleDatabase;
 import stredoskolskaodbornacinost.soc.bodyconditiontest.muscles.model.entities.ProfileData;
 
@@ -107,18 +108,14 @@ public class BasicMuscleActivity extends AppCompatActivity {
             }
         }.execute();
 
-        Log.e("Ukladani", "Nepovedlo se");
         if (profData != null) {
             Bundle bundle = new Bundle();
-            DiagnoseHelper diagnoseHelper = new DiagnoseHelper();
+            Sender sender = new Sender();
             for(int i:damageValue) {
                 switch (i) {
                     case 0:
-                        DamageObjects dmgO = new DamageObjects("BMI Index",
-                                String.valueOf (myRound(diagnoseHelper.createBMIndex(profData.weight, profData.height))),
-                                diagnoseHelper.getBMIDiagnose());
-                        bundle.putInt("CONDITION_ALL_KEY", 0);
-                        bundle.putSerializable("CONDITION_ALL", dmgO);
+                        ArrayList<DamageObject> dmgObs = sender.get(profData);
+                        bundle.putSerializable("CONDITION_ALL", dmgObs);
                         fragments.get(3).setArguments(bundle);
                         break;
 
@@ -159,13 +156,8 @@ public class BasicMuscleActivity extends AppCompatActivity {
         viewPager.setCurrentItem(0);
     }
 
-    //Function for round numbers
-    public float myRound(float number) {
-        BigDecimal bd = new BigDecimal(Float.toString(number));
-        bd = bd.setScale(2, BigDecimal.ROUND_HALF_UP);
-        return bd.floatValue();
-    }
     public ProfileData getProfileData(){
         return this.profData;
     }
+
 }

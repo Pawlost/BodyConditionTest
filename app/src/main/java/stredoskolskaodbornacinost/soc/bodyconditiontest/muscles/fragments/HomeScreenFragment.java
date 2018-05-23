@@ -5,14 +5,11 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.Objects;
 
 import stredoskolskaodbornacinost.soc.bodyconditiontest.*;
-import stredoskolskaodbornacinost.soc.bodyconditiontest.muscles.main.DamageObjects;
-import stredoskolskaodbornacinost.soc.bodyconditiontest.muscles.main.adapters.DamageListAdapter;
 
 public class HomeScreenFragment extends Fragment {
     @Override
@@ -26,8 +23,7 @@ public class HomeScreenFragment extends Fragment {
                 TextView welcomeText = (TextView)view.findViewById(R.id.welcomeText);
                 String name = Objects.requireNonNull(bundle.getStringArray("PROFILE_NAME"))[0];
                 String lastname = Objects.requireNonNull(bundle.getStringArray("PROFILE_NAME"))[1];
-                welcomeText.setText(getContext().getResources().getString(R.string.welcome_string) + " "
-                + name + " " + lastname);
+                welcomeText.setText(getContext().getResources().getString(R.string.welcome_string) + " " + name + " " + lastname);
             }
         }
 
