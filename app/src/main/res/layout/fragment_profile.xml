@@ -189,6 +189,14 @@
 
              </LinearLayout>
 
+        <TextView android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="Mas kondici prumerneho sportovce" />
+
+        <TextView android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="Predpokladana delka zivota: infinity" />
+
         </LinearLayout>
 
     </LinearLayout>

@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import stredoskolskaodbornacinost.soc.bodyconditiontest.muscles.main.damage.Obesity;
 import stredoskolskaodbornacinost.soc.bodyconditiontest.muscles.model.entities.ProfileData;
 
-public class Sender {
+public class DiagnoseCreater {
 
     public ArrayList<DamageObject> get(ProfileData profileData){
         ArrayList<DamageObject> dmgObs = new ArrayList<>();

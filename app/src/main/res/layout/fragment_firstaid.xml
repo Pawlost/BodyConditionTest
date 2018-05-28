@@ -9,21 +9,46 @@
     tools:context="stredoskolskaodbornacinost.soc.bodyconditiontest.muscles.fragments.FirstAidFragment"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:textSize="50sp"
-        android:textAlignment="center"
-        android:text="@string/first_aid_string" />
     <ScrollView
         android:layout_height="0dp"
         android:layout_weight="9"
         android:layout_width="match_parent">
-        <ListView
-            android:id="@+id/firstAidList"
+        <LinearLayout
             android:layout_height="wrap_content"
-            android:layout_width="match_parent"/>
+            android:layout_width="match_parent"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="50sp"
+                android:textAlignment="center"
+                android:text="@string/first_aid_string" />
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:textColor="#ff0000"
+                android:textSize="30sp"
+                android:text="Varování"/>
+
+            <ListView
+                android:id="@+id/firstAidListWarning"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent" />
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:textSize="30sp"
+                android:text="Normální"/>
+
+            <ListView
+                android:id="@+id/firstAidListNormal"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"/>
+
+        </LinearLayout>
     </ScrollView>
 </LinearLayout>

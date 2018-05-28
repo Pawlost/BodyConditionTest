@@ -11,15 +11,15 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import stredoskolskaodbornacinost.soc.bodyconditiontest.R;
-import stredoskolskaodbornacinost.soc.bodyconditiontest.muscles.main.DamageObject;
+import stredoskolskaodbornacinost.soc.bodyconditiontest.muscles.model.entities.FirstAidObject;
 
 /**
  * Created by balda on 23.03.2018.
  */
 
-public class FirstAidListAdapter extends ArrayAdapter<DamageObject> {
+public class FirstAidListAdapter extends ArrayAdapter<FirstAidObject> {
 
-    public FirstAidListAdapter(Context context, ArrayList<DamageObject> dmg) {
+    public FirstAidListAdapter(Context context, ArrayList<FirstAidObject> dmg) {
         super(context, 0, dmg);
     }
 
@@ -27,21 +27,18 @@ public class FirstAidListAdapter extends ArrayAdapter<DamageObject> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
-        DamageObject dam = getItem(position);
+        FirstAidObject fa = getItem(position);
 
         if (convertView == null) {
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.damage_layout, parent, false);
+            convertView = LayoutInflater.from(getContext()).inflate(R.layout.firstaid_list_layout, parent, false);
         }
 
         TextView mainTitle = (TextView) convertView.findViewById(R.id.mainTitle);
-        TextView valueText = (TextView) convertView.findViewById(R.id.diagnoseText);
 
-        if(dam.getMainTitle() != null){
-            mainTitle.setText(dam.getMainTitle());
+        if(fa.title != null){
+            mainTitle.setText(fa.title);
         }
-        if(dam.getText() != null) {
-            valueText.setText(dam.getText());
-        }
+
         return convertView;
     }
 }

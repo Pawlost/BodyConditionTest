@@ -30,7 +30,7 @@ public class DamageListAdapter extends ArrayAdapter<DamageObject> {
         DamageObject dam = getItem(position);
 
         if (convertView == null) {
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.damage_layout, parent, false);
+            convertView = LayoutInflater.from(getContext()).inflate(R.layout.damage_list_layout, parent, false);
         }
 
         TextView mainTitle = (TextView) convertView.findViewById(R.id.mainTitle);
@@ -38,7 +38,6 @@ public class DamageListAdapter extends ArrayAdapter<DamageObject> {
 
         if (dam.isCriticalCondition()){
             mainTitle.setTextColor(Color.RED);
-            valueText.setTextColor(Color.RED);
         }
 
         if(dam.getMainTitle() != null){

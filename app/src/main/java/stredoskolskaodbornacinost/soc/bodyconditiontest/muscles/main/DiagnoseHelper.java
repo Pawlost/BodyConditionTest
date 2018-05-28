@@ -1,26 +1,17 @@
 package stredoskolskaodbornacinost.soc.bodyconditiontest.muscles.main;
 
-import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
 import java.math.BigDecimal;
-
-import stredoskolskaodbornacinost.soc.bodyconditiontest.R;
 
 public class DiagnoseHelper {
 
     private boolean critcalCondition;
 
-    public String[] Obesity(int weight, int height){
+    public String[] obesity(int weight, int height){
         float index = createBMIndex(weight, height);
         return new String []{String.valueOf(myRound(index)), getBMIDiagnose(index)};
     }
 
-    public float createBMIndex(int weight, int height) {
-
+    private float createBMIndex(int weight, int height) {
         float BMIndex = 0f;
         if (height > 0 && weight > 0) {
             float tHeight = (float)(height) / 100;
@@ -29,7 +20,7 @@ public class DiagnoseHelper {
         return BMIndex;
     }
 
-    public String getBMIDiagnose(float BMIndex) {
+    private String getBMIDiagnose(float BMIndex) {
         String diagnose = "";
         if (BMIndex >= 40) {
             diagnose = "Obezita III. stupně";
@@ -69,7 +60,7 @@ public class DiagnoseHelper {
     }
 
     //Function for round numbers
-    public float myRound(float number) {
+    private float myRound(float number) {
         BigDecimal bd = new BigDecimal(Float.toString(number));
         bd = bd.setScale(2, BigDecimal.ROUND_HALF_UP);
         return bd.floatValue();

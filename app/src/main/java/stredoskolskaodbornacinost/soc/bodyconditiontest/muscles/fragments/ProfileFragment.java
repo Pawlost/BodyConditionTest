@@ -1,13 +1,11 @@
 package stredoskolskaodbornacinost.soc.bodyconditiontest.muscles.fragments;
 
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -89,6 +87,6 @@ public class ProfileFragment extends Fragment {
         profData.height = Integer.parseInt(profileArray.get(4).getText().toString());
         profData.whamen = whamenButton.isChecked();
 
-        mainActivity.setConditionDiagnose(new int[]{0, 1}, profData);
+        mainActivity.saveProfData(profData);
     }
 }
